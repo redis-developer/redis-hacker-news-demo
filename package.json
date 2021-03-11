@@ -1,0 +1,51 @@
+{
+  "name": "hacker-news-clone-using-redis",
+  "version": "0.10.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon index.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node index.js",
+    "seed": "node ./backend/scripts/seed.js"
+  },
+  "keywords": [],
+  "author": "adrphlhome <adrphlhome@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "algoliasearch": "^4.8.3",
+    "axios": "^0.21.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "helmet": "^4.2.0",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "linkify-urls": "^3.1.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.11.8",
+    "nanoid": "^3.1.20",
+    "next": "^10.0.3",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.4.17",
+    "nodemailer-mailgun-transport": "^2.0.2",
+    "path-match": "^1.2.4",
+    "psl": "^1.8.0",
+    "react": "^17.0.1",
+    "react-day-picker": "^7.4.8",
+    "react-dom": "^17.0.1",
+    "react-highlight-words": "^0.16.0",
+    "redis": "^3.0.2",
+    "redis-redisearch": "^1.0.1",
+    "validator": "^13.5.2",
+    "xss": "^1.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

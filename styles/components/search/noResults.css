@@ -1,0 +1,32 @@
+.search-no-results {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.search-no-results-msg {
+  padding-top: 24px;
+}
+
+.search-no-results-suggestions-label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-no-results-suggestion {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.search-no-results-suggestion a {
+  color: #477dca;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 775px) and (min-width: 0px) {
+  .search-no-results {
+    font-size: 14px;
+  }
+}

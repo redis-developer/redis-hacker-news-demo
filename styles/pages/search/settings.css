@@ -1,0 +1,101 @@
+.search-settings-wrapper {
+  width: 85%;
+  max-width: 1400px;
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: Verdana,Geneva,sans-serif
+}
+
+.search-settings-content {
+  font-size: 12px;
+  background-color: #f6f6ef;
+  padding: 15px;
+}
+
+.search-settings-page-label {
+  font-size: 16px;
+  height: 42px;
+}
+
+.search-settings-options-fields {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 0;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.search-settings-options-fields h2 {
+  color: #5c5c5c;
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 24px;
+  font-weight: 200;
+}
+
+.search-settings-options-field {
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 16px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.search-settings-options-field label {
+  width: 50%;
+  margin-right: 24px;
+  text-align: right;
+  color: #5c5c5c;
+  font-size: 13.5px;
+}
+
+.search-settings-options-field-input {
+  width: 50%;
+}
+
+.search-settings-options-field-input select {
+  color: #5c5c5c;
+  font-size: 13.5px;
+  background-color: buttonface;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(169, 169, 169);
+}
+
+.search-settings-apply-changes {
+  padding: 0 24px 24px;
+  text-align: right;
+}
+
+.search-settings-apply-changes button {
+  padding: 8px 16px;
+  border: 0 solid #ccc;
+  border-radius: 4px;
+  color: #fff;
+  opacity: .7;
+  background-color: #ff742b;
+  cursor: not-allowed;
+}
+
+.search-settings-apply-changes button:focus {
+  outline: 0;
+}
+
+.search-settings-apply-changes button.active {
+  cursor: pointer;
+  opacity: 1;
+}
+
+@media screen and (max-width: 1200px) {
+  .search-settings-wrapper {
+    width: 100%;
+    margin: 0;
+  }
+}

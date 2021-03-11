@@ -1,0 +1,116 @@
+.login-section{
+  background-color: #f5f5f5;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-wrapper{
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+}
+
+.login-logo{
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-logo img{
+  max-width: 72px;
+}
+
+.login-title{
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.login-title h1{
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.login-error-msg{
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+.login-form-input input[type="text"], .login-form-input input[type="password"]{
+  position: relative;
+  border: 1px solid #ced4da;
+  display: block;
+  width: 100%;
+  padding: 13px 10px;
+  font-size: 16px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  z-index: 1;
+}
+
+.login-form-input input[type="text"]{
+  border-radius: 4px 4px 0 0;
+  margin-bottom: -1px;
+}
+
+.login-form-input input[type="password"]{
+  border-radius: 0 0 4px 4px;
+}
+
+.login-form-input input[type="text"]:focus, .login-form-input input[type="password"]:focus{
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  z-index: 2;
+}
+
+.login-form-submit {
+  margin-top: 16px;
+}
+
+.login-form-submit input[type="submit"]{
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  text-align: center;
+  font-size: 20px;
+  padding: 12px 16px;
+  border-radius: 5px;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out,border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.login-form-submit input[type="submit"]:hover{
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+.login-form-submit input[type="submit"]:focus{
+  color: #fff;
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  box-shadow: 0 0 0 0.25rem rgb(49 132 253 / 50%);
+}
+
+.login-forgot-psw{
+  margin-top: 16px;
+  text-align: center;
+}
+
+.login-forgot-psw a{
+  font-size: 16px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.login-forgot-psw a:hover{
+  color: #0056b3;
+  text-decoration: underline;
+}
