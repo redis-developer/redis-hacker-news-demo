@@ -10,7 +10,7 @@ import getRankedAskItemsByPage from "../api/items/getRankedAskItemsByPage.js"
 
 export default class extends Component {
   static async getInitialProps ({req, query}) {
-    const page = query.page ? parseInt(query.page) : 1
+    const page = query.page ? parseInt(query.pageName) : 1
     const apiResult = await getRankedAskItemsByPage(page, req)
 
     return {

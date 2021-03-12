@@ -7,18 +7,21 @@ function clientWrapper (client) {
   return this
 }
 
-clientWrapper.prototype.run = function (command, params = []) {
-  logger.log('REDIS RUN - ', command, params.join(' '))
+clientWrapper.prototype.run = async function (command, params = []) {
+  logger.log('REDIS RUN - ', command.split('_').join('.').toUpperCase(), params.join(' '))
   if (this[command] && typeof this[command] === 'function') {
-    return this[command](params)
+    const result = await this[command](params)
+    logger.log('REDIS RESULT - ', JSON.stringify(result))
+    return result
   }
 
   return new Promise((resolve, reject) => {
-    this.client[command](params, (err, res) => {
+    this.client[command](params, async (err, res) => {
       if (err) {
         reject(err)
       }
 
+      logger.log('REDIS RESULT - ', JSON.stringify(res))
       resolve(res)
     })
   })
@@ -51,6 +54,8 @@ clientWrapper.prototype.json_set = function (params) {
     const [ path, key, value ] = params
 
     const stringifyValue = JSON.stringify(value)
+
+    logger.log('REDIS RUN REFORMAT - ', 'JSON.SET', path, key, "'" + stringifyValue + "'")
     this.client['json_set']([path, key, stringifyValue], (err, res) => {
       if (err || !res) {
         return reject(err)
