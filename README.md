@@ -431,19 +431,7 @@ FT.SEARCH idx:moderation-log * NOCONTENT LIMIT 0 0 SORTBY _id DESC
 JSON.MGET moderation-log:1 .
 ```
 
-### Schema
-
-#### User Schema
-```javascript
-{
-	username: STRING, // indexed
-	email: STRING,    // indexed
-	karma: NUMBER,    // indexed
-	password: STRING,
-	settings: OBJECT,
-}
-```
-
+## Example commands
 #### There are 2 type of fields, indexed and non-indexed.
 1. Indexed fields will be stored in hash using HSET/HGET.
 2. Non-indexed fields will be stored in RedisJSON.
