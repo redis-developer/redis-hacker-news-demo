@@ -3,6 +3,13 @@ const logger = require('./logger')
 const RedisDbTypes = require('./db-types')
 const { getModel } = require('./all-models')
 
+const doEscape = (str) => {
+  if (typeof str === 'undefined' || str === null || str === '') {
+    return str
+  }
+  return (str + '').split('-').join('\\-')
+}
+
 function QueryBuilder (query, model) {
   var self = this;
 
@@ -96,7 +103,7 @@ const getAdditionalQuery = (isIndexKey, key, query) => {
   // If it's $in query
   if (secondKeys.indexOf('$in') !== -1) {
     if (query['$in'].length > 0) {
-      additionalQuery += `(@${key}:(${query['$in'].map(q => `"${q}"`).join('|')}))`
+      additionalQuery += `(@${key}:(${query['$in'].map(q => `"${doEscape(q)}"`).join('|')}))`
     } else {
       // This is special case, we need evaluate this as false always...false
       // To evaluate false, assume that nothing wil start with a$$$$$
@@ -106,7 +113,7 @@ const getAdditionalQuery = (isIndexKey, key, query) => {
   // $nin
   else if (secondKeys.indexOf('$nin') !== -1) {
     if (query['$nin'].length > 0) {
-      additionalQuery += `(-(@${key}:(${query['$nin'].map(q => `"${q}"`).join('|')})))`
+      additionalQuery += `(-(@${key}:(${query['$nin'].map(q => `"${doEscape(q)}"`).join('|')})))`
     } else {
       // This is special case, we need evaluate this as false always...false
       // To evaluate false, assume that nothing wil start with a$$$$$
@@ -163,7 +170,7 @@ QueryBuilder.prototype.getQuery = function (query, schema) {
       } else {
         queryString += ' '
         queryString += '('
-        queryString += `@${key}:"${query[key]}"`
+        queryString += `@${key}:"${doEscape(query[key])}"`
         queryString += ')'
       }
       continue

@@ -10,6 +10,7 @@ const UserVoteModel = require('../db/userVote')
 const ModerationLogModel = require('../db/moderationLog')
 const ItemModel = require('../db/item')
 const CommentModel = require('../db/comment')
+const maxDepth = 1
 
 createUserIfNotExists = async (by) => {
   const user = await UserModel.findOne({ username: by })
@@ -31,6 +32,9 @@ createUserIfNotExists = async (by) => {
 }
 
 const createComments = async (item, kids, level = 0, rootItem) => {
+  if (level >= maxDepth) {
+    return []
+  }
   const createdComments = []
 
   const paredKids = kids.slice(0, 3)
@@ -71,9 +75,20 @@ const createComments = async (item, kids, level = 0, rootItem) => {
   return createdComments
 }
 
-module.exports = async function runSeed() {
+const createAModerator = async () => {
+  const newUser = new UserModel({
+    username: 'moderator',
+    password: 'password123',
+    created: new Date().getTime(),
+    karma: 0,
+    isModerator: true,
+  })
+  await newUser.save()
+}
 
-  const bestStories = await hackernews.getBestStories(3)
+module.exports = async function runSeed(maxStories) {
+
+  const bestStories = await hackernews.getBestStories(maxStories)
 
   for (let i = 0; i < bestStories.length; i ++) {
     const story = await hackernews.getItemById(bestStories[i])
@@ -100,4 +115,6 @@ module.exports = async function runSeed() {
     await createComments(newItem, story.kids, 0, newItem)
   }
   
+
+  await createAModerator()
 }

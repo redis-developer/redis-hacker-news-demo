@@ -362,7 +362,8 @@ export default class extends Component {
                   !item.dead ?
                   <>
                     {
-                      item.commentCount > 0 ?
+                      // item.commentCount > 0 ?
+                      false ?
                       <>
                         <span> | </span>
                         <span className="item-comments">

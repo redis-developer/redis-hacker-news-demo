@@ -52,6 +52,7 @@ module.exports = {
   },
   loginUser: function(username, password, callback) {
     UserModel.findOne({username: username}).exec(function(error, user) {
+      console.log(error, user)
       if (error) {
         callback({submitError: true})
       } else if (!user) {

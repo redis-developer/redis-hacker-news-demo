@@ -10,7 +10,7 @@ async function run () {
   await redisJsonDb.run('flushall')
 
   const runSeed = require('./runSeed')
-  runSeed()
+  runSeed(20)
 }
 
 run()
