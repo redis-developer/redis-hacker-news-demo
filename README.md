@@ -3,7 +3,7 @@
 ### Screens
 #### Signup
 ![Signup Screen](docs/screenshot-signup.png)
-- Make sure user does not exists.
+- Make sure user does not exist.
 ```
 FT.SEARCH idx:user  (@username:"andy1") NOCONTENT LIMIT 0 1 SORTBY _id DESC
 ```

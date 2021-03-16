@@ -54,6 +54,7 @@ app.put("/users/login", function(req, res) {
 
         res.cookie("user", response.username + "&" + response.authToken, cookieSettings)
 
+        console.log(cookieSettings)
         res.json({success: true})
       }
     })

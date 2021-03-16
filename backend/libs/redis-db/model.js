@@ -182,7 +182,7 @@ function modelGenerator (idx, schema, clients) {
   model.prototype.getNextId = async function () {
     const currentId = await this.searchClient.run('get', [`${ID_INDICATOR}`]) || 1
     const nextId = +currentId + 1
-    await this.searchClient.run('set', [`${ID_INDICATOR}`, nextId])
+    await this.searchClient.run('incr', [`${ID_INDICATOR}`])
     return +currentId
   }
 
