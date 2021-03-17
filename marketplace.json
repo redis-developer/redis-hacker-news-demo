@@ -1,0 +1,22 @@
+{
+    "app_name": "Hacker News Clone in Nodejs",
+    "description": "A hacker news clone project in Nuxt + Nodejs + Express based on RediSearch and RediJSON",
+    "type": "Building Block",
+    "contributed_by": "Redis Labs",
+    "repo_url": "https://github.com/redis-developer/redis-hacker-news-demo",
+    "download_url": "https://github.com/redis-developer/redis-hacker-news-demo/archive/main.zip",
+    "hosted_url": "",
+    "quick_deploy": "true",
+    "deploy_buttons": [],
+    "language": ["JavaScript"],
+    "redis_commands": ["HSET", "HGET", "HMGET", "SET", "GET", "INCR", "FT.SEARCH", "FT.INFO", "FT.CREATE", "JSON.GET", "JSON.SET", "JSON.MGET"],
+    "redis_features": ["hacker-news"],
+    "redis_modules": [],
+    "app_image_urls": [
+        "https://github.com/redis-developer/redis-hacker-news-demo/blob/main/docs/screenshot-newest.png?raw=true"
+    ],
+    "youtube_url": "",
+    "special_tags": [],
+    "verticals": ["Financial"],
+    "markdown": "https://raw.githubusercontent.com/redislabs-training/redis-sitesearch/master/README.md"
+}
