@@ -407,6 +407,7 @@ SET item:id-indicator 5
 HSET item:4 id iBi8sU4HRcZ2 by andy1 title Firebase trends type ask url  domain  text Firebase Performance Monitoring is a service that helps you to gain insight into the performance characteristics of your iOS, Android, and web apps. points 1 score 0 created 1615571392 dead false _id 4
 JSON.SET item:4 . '{"id":"iBi8sU4HRcZ2","by":"andy1","title":"Firebase trends","type":"ask","url":"","domain":"","text":"Firebase Performance Monitoring is a service that helps you to gain insight into the performance characteristics of your iOS, Android, and web apps.","points":1,"score":0,"commentCount":0,"created":1615571392,"dead":false,"_id":4}'
 ```
+
 #### Update Profile
 ![Update Profile Screen](docs/screenshot-update-profile.png)
 - Get the user
@@ -429,6 +430,18 @@ FT.SEARCH idx:moderation-log * NOCONTENT LIMIT 0 0 SORTBY _id DESC
 - Get that moderation logs
 ```
 JSON.MGET moderation-log:1 .
+```
+
+#### Search
+![Search Screen](docs/screenshot-search.png)
+- Get items that contains "fa"
+```
+FT.SEARCH idx:item  (@title:fa*) (-(@id:"aaaaaaaaa")) (@dead:"false") NOCONTENT LIMIT 0 30 SORTBY score ASC
+// Result - [2,"item:18","item:16"]
+```
+- Get those items via json
+```
+JSON.MGET item:18 item:16 .
 ```
 
 ## Example commands
