@@ -309,7 +309,7 @@ redis-10292.c10.us-east-1-2.ec2.cloud.redislabs.com:10292> GET comment:id-indica
 
 ### By Screens
 #### Signup
-![Signup Screen](docs/screenshot-signup.png)
+![Signup Screen](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-signup.png)
 - Make sure user(where username is andy1) does not exist.
 ```
 FT.SEARCH idx:user  (@username:"andy1") NOCONTENT LIMIT 0 1 SORTBY _id DESC
@@ -329,7 +329,7 @@ JSON.SET user:63 . '{"username":"andy1","password":"$2a$10$zy8tsCske8MfmDX5CcWMc
 
 
 #### Login
-![Login Screen](docs/screenshot-login.png)
+![Login Screen](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-login.png)
 - Find user
 ```
 FT.SEARCH idx:user  (@username:"andy1") NOCONTENT LIMIT 0 1 SORTBY _id DESC
@@ -341,7 +341,7 @@ JSON.MGET user:63 .
 - Compare password and new password hash and create cookie if it's successful
 
 ### Item list page
-![Newest Screen](docs/screenshot-newest.png)
+![Newest Screen](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-newest.png)
 - Check if user has toggled hidden attribute on a specific item.
 ```
 FT.SEARCH idx:user-hidden  (@username:"andy1") NOCONTENT LIMIT 0 10000 SORTBY _id DESC
@@ -373,7 +373,7 @@ JSON.MGET item:19 item:17 item:16 item:15 item:14 item:13 item:12 item:11 item:8
 // Result - the JSON of selected items
 ```
 ### Item Detail
-![Item Detail Screen](docs/screenshot-item-detail.png)
+![Item Detail Screen](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-item-detail.png)
 - Get the item object first
 ```
 JSON.MGET item:1 .
@@ -409,7 +409,7 @@ JSON.SET item:4 . '{"id":"iBi8sU4HRcZ2","by":"andy1","title":"Firebase trends","
 ```
 
 #### Update Profile
-![Update Profile Screen](docs/screenshot-update-profile.png)
+![Update Profile Screen](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-update-profile.png)
 - Get the user
 ```
 FT.SEARCH idx:user  (@username:"andy1") NOCONTENT LIMIT 0 1 SORTBY _id DESC
@@ -421,7 +421,7 @@ HSET user:63 username andy1 email  created 1615569194 karma 1 about I am a softw
 JSON.SET user:63 . '{"username":"andy1","password":"$2a$10$zy8tsCske8MfmDX5CcWMce5S1U7PJbPI7CfaqQ7Bo1PORDeqJxqhe","authToken":"KJwPLN1idyQrMp5qEY5hR3VhoPFTKRcC8Npxxoju","authTokenExpiration":1647106257,"email":"","created":1615569194,"karma":1,"about":"I am a software engineer.","showDead":false,"isModerator":false,"shadowBanned":false,"banned":false,"_id":63}'
 ```
 #### Moderation Logs screen
-![Moderation Logs](docs/moderation-logs.png)
+![Moderation Logs](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/moderation-logs.png)
 - Find all moderation logs
 ```
 FT.SEARCH idx:moderation-log * NOCONTENT LIMIT 0 0 SORTBY _id DESC
@@ -433,7 +433,7 @@ JSON.MGET moderation-log:1 .
 ```
 
 #### Search
-![Search Screen](docs/screenshot-search.png)
+![Search Screen](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-search.png)
 - Get items that contains "fa"
 ```
 FT.SEARCH idx:item  (@title:fa*) (-(@id:"aaaaaaaaa")) (@dead:"false") NOCONTENT LIMIT 0 30 SORTBY score ASC
