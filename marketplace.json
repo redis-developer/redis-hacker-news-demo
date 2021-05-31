@@ -1,6 +1,6 @@
 {
     "app_name": "Hacker News Clone in Nodejs",
-    "description": "A hacker news clone project in Nuxt + Nodejs + Express based on RediSearch and RediJSON",
+    "description": "A Hacker News Clone project in NextJS + Nodejs + Express based on RediSearch and RedisJSON",
     "type": "Building Block",
     "contributed_by": "Redis Labs",
     "repo_url": "https://github.com/redis-developer/redis-hacker-news-demo",
