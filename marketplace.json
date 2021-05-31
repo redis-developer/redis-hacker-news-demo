@@ -13,7 +13,7 @@
     "redis_features": ["hacker-news"],
     "redis_modules": [],
     "app_image_urls": [
-        "https://github.com/redis-developer/redis-hacker-news-demo/blob/main/docs/screenshot-newest.png?raw=true"
+        "https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-newest.png"
     ],
     "youtube_url": "",
     "special_tags": [],
