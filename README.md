@@ -395,7 +395,7 @@ FT.SEARCH idx:comment  (@dead:"false") (@_id:("3"|"7"|"11")) NOCONTENT LIMIT 0 1
 - Iterate this over until all comments are resolved
 
 #### Submit 
-![Submit Screen](docs/screenshot-submit.png)
+![Submit Screen](https://github.com/redis-developer/redis-hacker-news-demo/blob/master/docs/screenshot-submit.png)
 - Get next item's id and increase it
 ```
 GET item:id-indicator
