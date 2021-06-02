@@ -1,9 +1,12 @@
-# Tutorial: Hacker-news clone with redis-only database running on NodeJS
-## Technical Stacks
+# Tutorial: Hacker News clone with Redis-only database running on NodeJS
+
+## Technical Stack
+
 * Frontend - *React*, *NextJS*
 * Backend - *NodeJS*, *ExpressJS*, *Redis*(RediSearch + RedisJSON)
 
 ## Database Schema
+
 ### User
 ```javascript
 username: STRING  // unique id of user
