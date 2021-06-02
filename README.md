@@ -1,4 +1,4 @@
-# Tutorial: Hacker News clone with Redis-only database running on NodeJS
+# Tutorial: Hackernews clone that uses Redis as a primary database (RedisJSON + RedisSearch)
 
 ## Technical Stack
 
