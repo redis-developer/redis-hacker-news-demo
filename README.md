@@ -1,4 +1,4 @@
-# Tutorial: Hackernews clone that uses Redis as a primary database (RedisJSON + RedisSearch)
+# Tutorial: Hacker News clone that uses Redis as a primary database (RedisJSON + RediSearch)
 
 ## Technical Stack
 
