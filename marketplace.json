@@ -8,7 +8,7 @@
     "hosted_url": "",
     "quick_deploy": "true",
     "deploy_buttons": [],
-    "language": ["JavaScript"],
+    "language": ["JavaScript", "NodeJS"],
     "redis_commands": ["HSET", "HGET", "HMGET", "SET", "GET", "INCR", "FT.SEARCH", "FT.INFO", "FT.CREATE", "JSON.GET", "JSON.SET", "JSON.MGET"],
     "redis_features": [""],
     "redis_modules": [],
