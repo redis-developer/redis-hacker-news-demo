@@ -4,6 +4,7 @@
     "type": "Building Block",
     "contributed_by": "Redis Labs",
     "repo_url": "https://github.com/redis-developer/redis-hacker-news-demo",
+    "preview_image_url": "https://raw.githubusercontent.com/redis-developer/redis-hacker-news-demo/master/images/app_preview_image.png",
     "download_url": "https://github.com/redis-developer/redis-hacker-news-demo/archive/main.zip",
     "hosted_url": "",
     "quick_deploy": "true",
