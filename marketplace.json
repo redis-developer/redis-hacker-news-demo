@@ -1,8 +1,8 @@
 {
     "app_name": "Hacker News Clone in NodeJS",
-    "description": "A Hacker News Clone project in NextJS + NodeJS + Express based on RediSearch and RedisJSON",
+    "description": "A Hacker News Clone project in NextJS + NodeJS + Express based on Redis Search and JSON",
     "type": "Building Block",
-    "contributed_by": "Redis Labs",
+    "contributed_by": "Redis",
     "repo_url": "https://github.com/redis-developer/redis-hacker-news-demo",
     "preview_image_url": "https://raw.githubusercontent.com/redis-developer/redis-hacker-news-demo/master/images/app_preview_image.png",
     "download_url": "https://github.com/redis-developer/redis-hacker-news-demo/archive/main.zip",
@@ -11,8 +11,8 @@
     "deploy_buttons": [],
     "language": ["JavaScript", "NodeJS"],
     "redis_commands": ["HSET", "HGET", "HMGET", "SET", "GET", "INCR", "FT.SEARCH", "FT.INFO", "FT.CREATE", "JSON.GET", "JSON.SET", "JSON.MGET"],
-    "redis_features": [""],
-    "redis_modules": [],
+    "redis_use_cases": [""],
+    "redis_features": [],
     "app_image_urls": [
         "https://raw.githubusercontent.com/redis-developer/redis-hacker-news-demo/master/docs/screenshot-newest.png"
     ],
