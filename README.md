@@ -1,9 +1,9 @@
-## Tutorial: Hacker News clone that uses Redis as a primary database (RedisJSON + RediSearch)
+## Tutorial: Hacker News clone that uses Redis as a primary database (Redis JSON + Redis Search)
 
 ## Technical Stack
 
 * Frontend - *React*, *NextJS*
-* Backend - *NodeJS*, *ExpressJS*, *Redis*(RediSearch + RedisJSON)
+* Backend - *NodeJS*, *ExpressJS*, *Redis*(Redis Search + Redis JSON)
 
 ## Database Schema
 
@@ -75,10 +75,10 @@ This schema is to store and keep track of moderator action history.
 
 ### How do you store a document?
 We want to store a document(like a user) in redis.
-Basically, *indexable* and *sortable* fields are stored in hash while we store rest of the fields in RedisJSON. We can apply RediSearch queries once we store in hash.
+Basically, *indexable* and *sortable* fields are stored in hash while we store rest of the fields in Redis JSON. We can applyRedis Searchqueries once we store in hash.
 
-2 databases were in redislabs, one with RediSearch enabled and the other one with RedisJSON enabled.
-Example user document 
+2 databases were in redislabs, one withRedis Searchenabled and the other one with Redis JSON enabled.
+Example user document
 ```javascript
 {
     username: 'andyr',
@@ -88,14 +88,14 @@ Example user document
     isModerator: false,
 }
 ```
-We need to search by `username`, `created`, `isModerator` but we dont need to search by `password` and `authToken`. Thus, `username`, `created` and `isModerator` will be saved in RediSearch. `password` and `authToken` will be saved in RedisJSON.
+We need to search by `username`, `created`, `isModerator` but we dont need to search by `password` and `authToken`. Thus, `username`, `created` and `isModerator` will be saved in Redis Search. `password` and `authToken` will be saved in Redis JSON.
 
-Store indexable/sortable fields in hash of RediSearch db
+Store indexable/sortable fields in hash ofRedis Searchdb
 ```
 HSET user:1 username andyr created 1541648957 isModerator false
 ```
 
-Store other fields in RedisJSON
+Store other fields in Redis JSON
 ```
 JSON.SET user:1 . '{ "password": "$2a$10$W4UUtt5hkoiDtKU1.ZR6H.EklDH1ePUpZTvEI2IBrYRrufx8WMvIO", "authToken": "EklDH1ePUpZTvEI2IBrYRrufx8WMvIO" }'
 ```
@@ -106,7 +106,7 @@ Get user where username is 'andyr'
 FT.SEARCH idx:user @username:"andyr" NOCONTENT LIMIT 0 1 // Will return user id
 ```
 Result - `['user:1']`
-- Then, get values from hash and RedisJSON, and combine them
+- Then, get values from hash and Redis JSON, and combine them
 ```
 HMGET user:1
 JSON.MGET user:1 .
@@ -118,7 +118,7 @@ When a new document added, we need to know the unique key to store value. `{coll
 It's increased whenever a new document is creaed and that id is used.
 
 ### How to update a document?
-We need to update isModerator to true from above user document. 
+We need to update isModerator to true from above user document.
 If it's indexable field,
 ```
 HSET user:1 isModerator true
@@ -135,9 +135,9 @@ DEL user:1
 ```
 
 ### DataTypes
-1. STRING - Stored as plain string format in hash key and in RedisJSON
+1. STRING - Stored as plain string format in hash key and in Redis JSON
 2. NUMBER - Same as STRING
-3. ARRAY - It won't be stored in hash, it will be only stored in RedisJSON
+3. ARRAY - It won't be stored in hash, it will be only stored in Redis JSON
 4. BOOLEAN - It can be stored as STRING, and apply queries
 5. DATE - It can be converted into timestamp, and application will use the single timezone when it's stored in db.
 
@@ -206,7 +206,7 @@ To check if indcies are configured properly.
 FT.INFO idx:user
 ```
 
-If one of the field is not configured, it should reconfigure RediSearch for example
+If one of the field is not configured, it should reconfigureRedis Searchfor example
 ```
 FT.CREATE idx:user ON hash PREFIX 1 user: SCHEMA username TEXT SORTABLE email TEXT SORTABLE created NUMERIC SORTABLE karma NUMERIC SORTABLE about TEXT showDead TEXT isModerator TEXT shadowBanned TEXT banned TEXT _id TEXT SORTABLE
 ```
@@ -359,7 +359,7 @@ FT.SEARCH idx:item  (-(@id:"item:4")) (@dead:"false") NOCONTENT LIMIT 0 30 SORTB
 FT.SEARCH idx:item (@dead:"false") NOCONTENT LIMIT 0 30 SORTBY _id ASC
 // Result - [3,"item:1","item:2","item:3"]
 ```
-- Get all items from RedisJSON
+- Get all items from Redis JSON
 ```
 JSON.MGET item:1 item:2 item:3 .
 // Result - [{"id":"bkWCjcyJu5WT","by":"todsacerdoti","title":"Total Cookie Protection","type":"news","url":"https://blog.mozilla.org/security/2021/02/23/total-cookie-protection/","domain":"mozilla.org","points":1,"score":1514,"commentCount":0,"created":1614089461,"dead":false,"_id":3}]]
@@ -397,7 +397,7 @@ FT.SEARCH idx:comment  (@dead:"false") (@_id:("3"|"7"|"11")) NOCONTENT LIMIT 0 1
 ```
 - Iterate this over until all comments are resolved
 
-#### Submit 
+#### Submit
 ![Submit Screen](https://raw.githubusercontent.com/redis-developer/redis-hacker-news-demo/master/docs/screenshot-submit.png)
 - Get next item's id and increase it
 ```
@@ -405,7 +405,7 @@ GET item:id-indicator
 // Result - 4
 SET item:id-indicator 5
 ```
-- Create hash and RedisJSON index
+- Create hash and Redis JSON index
 ```
 HSET item:4 id iBi8sU4HRcZ2 by andy1 title Firebase trends type ask url  domain  text Firebase Performance Monitoring is a service that helps you to gain insight into the performance characteristics of your iOS, Android, and web apps. points 1 score 0 created 1615571392 dead false _id 4
 JSON.SET item:4 . '{"id":"iBi8sU4HRcZ2","by":"andy1","title":"Firebase trends","type":"ask","url":"","domain":"","text":"Firebase Performance Monitoring is a service that helps you to gain insight into the performance characteristics of your iOS, Android, and web apps.","points":1,"score":0,"commentCount":0,"created":1615571392,"dead":false,"_id":4}'
@@ -450,22 +450,22 @@ JSON.MGET item:18 item:16 .
 ## Example commands
 #### There are 2 type of fields, indexed and non-indexed.
 1. Indexed fields will be stored in hash using HSET/HGET.
-2. Non-indexed fields will be stored in RedisJSON.
+2. Non-indexed fields will be stored in Redis JSON.
 
 
-- Create RediSearch Index
+- CreateRedis SearchIndex
 When schema is created, it should created index.
 ```
 FT.CREATE idx:user ON hash PREFIX 1 "user:" SCHEMA username TEXT SORTABLE email TEXT SORTABLE karma NUMERIC SORTABLE
 ```
 
-- Drop RediSearch Index
+- DropRedis SearchIndex
 Should drop/update index if the schema has changed
 ```
 FT.DROPINDEX idx:user
 ```
 
-- Get RediSearch Info
+- GetRedis SearchInfo
 Validate if the fields are indexed properly. If not, it will update the index fields or drop/recreate.
 ```
 FT.INFO idx:user
